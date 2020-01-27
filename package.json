@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/joeldmyers/typescript-review/issues"
   },
-  "homepage": "https://github.com/joeldmyers/typescript-review#readme"
+  "homepage": "https://github.com/joeldmyers/typescript-review#readme",
+  "devDependencies": {
+    "tslint": "^6.0.0",
+    "typescript": "^3.7.5"
+  }
 }
