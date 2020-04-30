@@ -23,6 +23,6 @@ Notes -
 ## Why use Typescript
 
 - Encode constraints and assumptions as part of developer intent
-- catch common mistakes
-- move some runtime errors to compile time
--
+- catch common mistakes, like spelling errors, or incomplete refactors (e.g., adding an argument to a function and then )
+- move some runtime errors to compile time, brings static analysis to code. 
+- provides great DX. 
