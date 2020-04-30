@@ -26,3 +26,10 @@ Notes -
 - catch common mistakes, like spelling errors, or incomplete refactors (e.g., adding an argument to a function and then )
 - move some runtime errors to compile time, brings static analysis to code. 
 - provides great DX. 
+
+# To compile like ES3 - 
+
+`tsc [filename]` => it converts.
+use flags: `tsc src/index.ts --target = ES2017 (or ES2015)`
+for node: `tsc src/index.ts --target ES2017 --module commonjs` (to get CommonJS)
+to watch: `tsc src/indes.ts --watch` 
