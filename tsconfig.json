@@ -3,6 +3,8 @@
   "compilerOptions": {
     "module": "CommonJS",
     "target": "ES2015",
-    "outDir": "lib"
+    "outDir": "lib", 
+    "declaration": true,
+    "sourceMap": true
   }
 }

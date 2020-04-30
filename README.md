@@ -1,8 +1,11 @@
 # Typescript Review
 
-Notes -
+## Getting started
 
-## General
+`npm i -g typescript` (this repo is using Node v12.16.2)
+then `tsc` (assuming the tsconfig.json file is configured) to compile 
+
+## General Notes
 
 - open-source typed syntactic superset of JavaScript, developed by Microsoft.
 
@@ -33,3 +36,7 @@ Notes -
 use flags: `tsc src/index.ts --target = ES2017 (or ES2015)`
 for node: `tsc src/index.ts --target ES2017 --module commonjs` (to get CommonJS)
 to watch: `tsc src/indes.ts --watch` 
+
+## tsconfig.json
+
+Adding `"declaration": true` to tsconfig generates a _type declaration file_ (.d.ts) that indicates specifics of all variable and function declarations.  

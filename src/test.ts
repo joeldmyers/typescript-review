@@ -1,3 +1,3 @@
 const addNumbers = (a, b) => a + b;
 
-module.exports = addNumbers;
+export default addNumbers;
