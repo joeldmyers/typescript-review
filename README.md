@@ -40,3 +40,9 @@ to watch: `tsc src/indes.ts --watch`
 ## tsconfig.json
 
 Adding `"declaration": true` to tsconfig generates a _type declaration file_ (.d.ts) that indicates specifics of all variable and function declarations.  
+
+Consider having `"strict": true` ultimately, once migrated from JS. 
+`"noImplicitAny": true` - good to have, to have type safety.
+`"target": "es2015"` or whatever target output format we want to have.
+
+Recommended to let Typescript convert to very modern JS, and then use Babel to take it the rest of the way. So leave target as esnext.  
