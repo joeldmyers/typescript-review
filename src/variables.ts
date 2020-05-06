@@ -79,3 +79,13 @@ const cc: [number, string, string, number] = [
  */
 
 let myObj: { houseNumber: number; streetName: string };
+
+/**
+ * Can use optional checks
+ */
+
+let myObject2: { houseNumber: number; streetName?: string };
+
+/**
+ * Operators
+ */
