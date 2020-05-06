@@ -67,3 +67,15 @@ const cc: [number, string, string, number] = [
 /**
  * Objects
  */
+
+/**
+ * Object Types
+ */
+
+/**
+ * We can declare types like the below.
+ * Use : instead of = to assign, and
+ * ; after each property
+ */
+
+let myObj: { houseNumber: number; streetName: string };
