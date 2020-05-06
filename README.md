@@ -46,3 +46,12 @@ Consider having `"strict": true` ultimately, once migrated from JS.
 `"target": "es2015"` or whatever target output format we want to have.
 
 Recommended to let Typescript convert to very modern JS, and then use Babel to take it the rest of the way. So leave target as esnext.  
+
+## Some notes: 
+
+### Top Types
+"Any" type is a "top type," which we should probably not use very often, and have it be intentionally a wildcard value.  
+
+### Type Annotation
+
+e.g., `let z: number`.  So if we are declaring a variable but not initializing it, we can still declare the type.  
