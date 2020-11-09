@@ -67,14 +67,28 @@ Example of more complex tsconfig.json:
 }
 ```
 
-This allows for tsx files. Strict is important after migrating.
+This allows for tsx files. Strict is important after migrating. Maybe set target at "esnext" and use Babel to handle transpilation.
 
 ## Some notes:
 
 ### Top Types
 
-"Any" type is a "top type," which we should probably not use very often, and have it be intentionally a wildcard value.
+"Any" type is a "top type," which we should probably not use very often, and have it be intentionally a wildcard value. It generally defeats the purpose of typescript to use this.
 
 ### Type Annotation
 
 e.g., `let z: number`. So if we are declaring a variable but not initializing it, we can still declare the type.
+
+### Variables
+
+If we assign `let x = "Hi";` and then later write `x = 42`, it will throw an error, because we have tried to change type.
+
+If we assign `const y = "hello";`, then the type of y is specifically "hello". This is called a literal type.
+
+If we want to instantiate a variable in ts without assigning it a value, we can type `let z:number`, for example.
+
+### Arrays
+
+To declare an array, we can do `let aa: number[] = [];`
+
+_Important_: if we do `let aa = []`, it creates an array of "nevers", a bottom type, and we can't add anything to it.
