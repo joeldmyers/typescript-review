@@ -92,3 +92,20 @@ If we want to instantiate a variable in ts without assigning it a value, we can 
 To declare an array, we can do `let aa: number[] = [];`
 
 _Important_: if we do `let aa = []`, it creates an array of "nevers", a bottom type, and we can't add anything to it.
+
+### Tuple
+
+A tuple in TS is an array of fixed length, with conventions:
+
+```
+let bb: [number, string, string, number] = [
+  123,
+  "Fake Street",
+  "Nowhere, USA",
+  10110
+];
+```
+
+Note: if you push to a tuple it is not checked in TS currently. Don't use array methods.
+
+If we want something to be either string or number, we can do `(string | number)`
