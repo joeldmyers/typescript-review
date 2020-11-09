@@ -143,7 +143,7 @@ We can then import and export these from modules just like values.
 
 ### Intersection & Union
 
-Example:
+Intersection Example:
 
 ```
 export interface HasPhoneNumber {
@@ -177,7 +177,7 @@ let contactInfo: HasEmail | HasPhoneNumber =
 
 In this scenario, we can then _only_ access the name, since it's the venn diagram overlap of both types.
 
-Second example:
+Union example:
 
 ```
 
@@ -190,3 +190,13 @@ let otherContactInfo = HasEmail & HasPhoneNumber {
 ```
 
 Now it _has_ to have all properties in the union.
+
+### Type Systems
+
+Type Equivalence
+
+Java, for ex., is a nominal type system - it checks if something is an instance of a class.
+
+Typescript only cares about the shape and structure of an object. It's a structural type system.
+
+Typescript uses the terms "wider" and "narrower" to describe the relative differences in a range of a type's allowable value: Anything (any) > array (any[]) - narrower > array of strings (string[]) > array of 3 ([string, string, string]) > ... > nothing (never)
