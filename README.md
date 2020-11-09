@@ -176,3 +176,17 @@ let contactInfo: HasEmail | HasPhoneNumber =
 ```
 
 In this scenario, we can then _only_ access the name, since it's the venn diagram overlap of both types.
+
+Second example:
+
+```
+
+let otherContactInfo = HasEmail & HasPhoneNumber {
+  name: "mike",
+  email: "mike@example.com",
+  phone: "1212212121"
+}
+
+```
+
+Now it _has_ to have all properties in the union.
