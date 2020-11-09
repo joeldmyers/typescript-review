@@ -108,4 +108,71 @@ let bb: [number, string, string, number] = [
 
 Note: if you push to a tuple it is not checked in TS currently. Don't use array methods.
 
-If we want something to be either string or number, we can do `(string | number)`
+If we want something to be either string or number, we can do `(string | number)`. Or `any`.
+
+### Object Types & Interfaces
+
+`let cc: { houseNumber: number; streetName: string };`
+
+If we do this, all properties are mandatory.
+
+If we want to make something optional, we should make it like this:
+
+`let cc1: { houseNumber: number; streetName?: string }`.
+
+So add `?:`.
+
+#### Interfaces
+
+If we want to re-use this type, we can create an interface.
+
+An interface is a name for a structure.
+
+```
+Interface Address {
+  houseNumber: number;
+  streetName?: string;
+}
+```
+
+We can then use this like this as a type:
+
+`let ee: Address = { houseNumber: 33 };`
+
+We can then import and export these from modules just like values.
+
+### Intersection & Union
+
+Example:
+
+```
+export interface HasPhoneNumber {
+  name: string;
+  phone: number;
+}
+
+export interface HasEmail {
+  name: string;
+  email: string;
+}
+```
+
+We can use this:
+
+```
+let contactInfo: HasEmail | HasPhoneNumber =
+  Math.random > 0.5
+    ? {
+      // assigning type HasPhoneNumber
+      name: "Mike",
+      phone: 212121212
+    }
+    : {
+      // assigning type HasEmail
+      name: "mike",
+      email: "mike@example.com"
+    }
+
+```
+
+In this scenario, we can then _only_ access the name, since it's the venn diagram overlap of both types.
