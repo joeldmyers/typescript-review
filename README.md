@@ -1,5 +1,9 @@
 # Typescript Review
 
+From Front End Masters course on Typescript 3 Fundamentals - https://frontendmasters.com/courses/typescript-v2/
+
+Supplemental notes from here: https://www.tutorialsteacher.com/typescript
+
 ## Getting started
 
 `npm i -g typescript` (this repo is using Node v12.16.2)
@@ -225,4 +229,62 @@ const sendMessage = (to: HasPhoneNumber): { recipient: string; body: string } =>
 }
 ```
 
-Return types can _always_ be inferred
+Return types can _always_ be inferred.
+
+Rest parameters are like using `arguments` when the number of arguments in a function is unknown. These have to be array-like:
+
+When the number of parameters that a function will receive is not known or can vary, we can use rest parameters. In JavaScript, this is achieved with the "arguments" variable. However, with TypeScript, we can use the rest parameter denoted by ellipsis ....
+
+```
+function Greet(greeting: string, ...names: string[]) {
+    return greeting + " " + names.join(", ") + "!";
+}
+
+Greet("Hello", "Steve", "Bill"); // returns "Hello Steve, Bill!"
+
+Greet("Hello");// returns "Hello !"
+```
+
+We can overload function signatures; e.g., contact via email or via phone:
+
+```
+
+function contactPeople(
+  method: "email" | "phone",
+  ...people: (HasEmail | HasPhoneNumber)[]
+): void {
+  if (method === "email") {
+    (people as HasEmail[]).forEach(sendEmail);
+  } else {
+    (people as HasPhoneNumber[]).forEach(sendTextMessage);
+  }
+  }
+}
+```
+
+## Interfaces In Depth
+
+Interfaces give us a way to define custom types and use them throughout our code base.
+
+- Call, construct, and Index signatures
+- Open interfaces - augmenting types (say imported from other library)
+- Access modifier keywords
+- Heritage clauses ("extends", "implements")
+
+### Type aliases
+
+we can give a type a name:
+
+`type StringOrNumber = string | number;`
+
+`type HasName = { name: string }`
+
+### Extending interfaces
+
+E.g.,
+
+```
+export interface HasInternationalPhoneNumber extends HasPhoneNumber {
+  countryCode: string
+}
+```
