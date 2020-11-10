@@ -200,3 +200,29 @@ Java, for ex., is a nominal type system - it checks if something is an instance 
 Typescript only cares about the shape and structure of an object. It's a structural type system.
 
 Typescript uses the terms "wider" and "narrower" to describe the relative differences in a range of a type's allowable value: Anything (any) > array (any[]) - narrower > array of strings (string[]) > array of 3 ([string, string, string]) > ... > nothing (never)
+
+## Function Basics
+
+Function arguments and return values can have type annotations:
+
+```
+function sendEmail(to: HasEmail): { recipient: string; body: string } {
+  return {
+    recipient: `${to.name} <${to.email}>`,
+    body: "You're pre-qualified for a loan! LOL"
+  };
+}
+```
+
+Ex of fat arrow function:
+
+```
+const sendMessage = (to: HasPhoneNumber): { recipient: string; body: string } => {
+  return {
+    recipient: `${to.name} <${to.email}>`,
+    body: "You're pre-qualified for a loan! LOL"
+  };
+}
+```
+
+Return types can _always_ be inferred
