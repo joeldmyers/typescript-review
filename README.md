@@ -288,3 +288,111 @@ export interface HasInternationalPhoneNumber extends HasPhoneNumber {
   countryCode: string
 }
 ```
+
+### Use interface to describe a call signature
+
+Interfaces can describe objects, functions, arrays - anything that extends from JS object type. No way to use interface for primitive types.
+
+```
+// interface
+interface ContactMessenger1 {
+  (contact: HasEmail | HasPhoneNumber, message: string): void;
+}
+
+// alias:
+type ContactMessenger2 = (
+  contact: HasEmail | HasPhoneNumber,
+  message: string
+) => void;
+```
+
+With function types, we get something called "contextual inference":
+
+```
+
+const emailer: ContactMessenger1 = (_contact, _message) => {
+  /** ... */
+}
+
+```
+
+### Construct signatures:
+
+very similar to call signatures:
+
+```
+interface ContactConstructor {
+  new(...args: any[]): HasEmail | HasPhoneNumber;
+}
+```
+
+### Array example:
+
+```
+
+interface PhoneNumberDict {
+  [numberName: string]:
+  | undefined
+  | {
+    areaCode: number;
+    num: number;
+  };
+}
+
+```
+
+Saying this will either not be there, or have the form of the object. By adding undefined, we force a check. So:
+
+```
+const d: PhoneNumberDict = {};
+
+if (d.abc) {
+  d.abc // now we know this is not undefined, so it has to be
+}
+
+```
+
+### Testing!
+
+dtslint - you can test types. https://github.com/microsoft/dtslint
+
+### Classes
+
+New concepts:
+
+- Fields
+- Access Modifier Keywords
+
+```
+
+export class Contact implements HasEmail {
+  email: string;
+  name: string;
+  constructor(name:string, email: string) {
+    this.email = email;
+    this.name = name;
+  }
+}
+
+```
+
+_implements_ is new - we can implement an interface - a class aligning with an interface.
+
+This above example is verbose.
+
+So shortcut: parameter properties.
+
+Also there are access modifier keywords: `public` - everyone, `protected` - me and subclasses, and `private` - just me.
+
+Different example:
+
+```
+class ParamPropContact implements HasEmail {
+  constructor {
+    public name: string,
+    public email: string = "no email";
+  }
+}
+```
+
+There is also `readonly`. Note that there may be javascript consumers of this and that will not prevent any JS people from rewriting it.
