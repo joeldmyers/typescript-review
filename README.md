@@ -396,3 +396,7 @@ class ParamPropContact implements HasEmail {
 ```
 
 There is also `readonly`. Note that there may be javascript consumers of this and that will not prevent any JS people from rewriting it.
+
+#### Abstract Classes
+
+can't be instantiated directly, but can be used to make subclasses.
