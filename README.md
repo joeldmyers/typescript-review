@@ -400,3 +400,51 @@ There is also `readonly`. Note that there may be javascript consumers of this an
 #### Abstract Classes
 
 can't be instantiated directly, but can be used to make subclasses.
+
+## Convert from Javascript to Typescript
+
+### What not to do!
+
+- Don't change functionality at the same time!
+- Don't attempt this if test coverage is low!
+- Don't let perfect be the enemy of the good - don't try to type things too strongly, too early on.
+- Don't forget to add tests for your types. Use `dtslint` for type testing.
+- Don't publish types for consumer use until you are "happy" with them.
+
+### Recipe for best practices to transition to typescript
+
+This allows for the change to happen incrementally.
+
+#### Step 1: Compile in "loose mode"
+
+1. Start with tests passing
+2. Rename all .js to .ts, allowing implicit any
+3. Fix only things that are not type-checking, or causing compile erros
+4. Be careful to avoid changing behavior
+5. Get tests passing again
+6. Commit
+
+#### Step 2: No Implicit Any
+
+1. Start with tests passing
+2. Ban implicit any (in tsconfig.json, add `noImplicitAny: true`)
+3. Where possible, provide a specific and appropriate type
+   a. import types for dependencies from DefinitelyTyped - an open source project that provides types from third party files, e.g., lodash (which is not written in typescript).
+   b. otherwise make `any` types explicit
+4. Get tests passing again.
+5. Commit
+
+#### Step 3: Squash explicit anys, enable strict mode
+
+1. Do this incrementally, in small chunks
+2. Enable strictmode:
+
+```
+"strictNullChecks": true,
+"strict": true,
+"strictFunctionTypes": true,
+"strictBindCallApply": true
+```
+
+3. Replace explicit anys with more appropriate types.
+4. Avoid type casting.
