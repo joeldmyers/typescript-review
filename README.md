@@ -448,3 +448,46 @@ This allows for the change to happen incrementally.
 
 3. Replace explicit anys with more appropriate types.
 4. Avoid type casting.
+
+## Generics
+
+Generics parameterize types in the same way that functions parameterize values.
+
+Example in JS:
+
+```
+
+function wrappedValue(x) {
+  return {
+    value: x
+  }
+}
+
+```
+
+The above does not specify what type x is.
+
+We can create a type for wrappedValue:
+
+```
+interface WrappedValue<X> {
+  value: X;
+}
+
+// now generic type:
+let val: WrappedValue<string[]> = { value: []};
+```
+
+The X above is locally scoped to the interface.
+
+This is similar to template parameters in C++. It's typically referenced as T:
+
+```
+
+// for Array.prototype.filter()
+
+interface FilterFunction<T = any> {
+  (val: T): boolean;
+}
+
+```
