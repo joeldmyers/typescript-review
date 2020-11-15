@@ -494,3 +494,45 @@ const stringFilter: FilterFunction<string> = val => typeof val === "string";
 ```
 
 the above `T = any` is a default value just like JS.
+
+## Top and Bottom
+
+`any` is a top type; also `unknown`. Unknown can receive any value. Difference between unknown and any is that any is accessible; unknown can't be used directly. Ex of where to use this is API response.
+
+`any` is great when we need flexibility.
+
+### Type guards
+
+`typeof`. Also `instanceof`.
+
+We can define our own typeguards. Pretty straightforward:
+
+```
+
+function isHasEmail(x: any): x is HasEmail {
+  return typeof x.name === "string" && typeof x.email === "string";
+}
+
+```
+
+Super handy guard:
+
+```
+
+function isDefined<T>(arg: T | undefined): arg is T {
+  return typeof arg !== "undefined";
+}
+```
+
+### Bottom Types
+
+`never` - UnreachableError is a feature we can use to put in conditional logic that is exhaustive; at the end it should have covered all possible options.
+
+```
+class UnreachableError extends Error {
+  constructor(val: never, message: string) {
+    super(`Unsupported kind: ${val}`);
+  }
+}
+
+```
