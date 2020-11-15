@@ -490,4 +490,7 @@ interface FilterFunction<T = any> {
   (val: T): boolean;
 }
 
+const stringFilter: FilterFunction<string> = val => typeof val === "string";
 ```
+
+the above `T = any` is a default value just like JS.
